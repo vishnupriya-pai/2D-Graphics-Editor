@@ -44,6 +44,15 @@ int get_int_input(const char* prompt, int min_val, int max_val) {
     }
 }
 
+// Helper function to pause and wait for the user to press Enter
+void press_enter_to_continue(void) {
+    printf("Press Enter to continue...");
+    char buffer[10];
+    if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+        // Prevent warning: ignoring return value of fgets
+    }
+}
+
 // Print details of a specific shape
 void print_shape_details(const Shape* s) {
     switch (s->type) {
@@ -142,9 +151,7 @@ void add_shape(void) {
 
     if (free_slot == -1) {
         printf("\033[1;31mError: Maximum shape count (%d) reached. Please delete some first.\033[0m\n", MAX_SHAPES);
-        printf("Press Enter to continue...");
-        char temp[10];
-        fgets(temp, sizeof(temp), stdin);
+        press_enter_to_continue();
         return;
     }
 
@@ -203,9 +210,7 @@ void add_shape(void) {
     shapes[free_slot] = new_shape;
     redraw_all_shapes();
     printf("\033[1;32mShape added successfully under ID %d!\033[0m\n", new_shape.id);
-    printf("Press Enter to continue...");
-    char temp[10];
-    fgets(temp, sizeof(temp), stdin);
+    press_enter_to_continue();
 }
 
 // Delete shape by ID
@@ -216,9 +221,7 @@ void delete_shape(void) {
     }
     if (active_count == 0) {
         printf("\033[1;31mNo shapes currently active to delete.\033[0m\n");
-        printf("Press Enter to continue...");
-        char temp[10];
-        fgets(temp, sizeof(temp), stdin);
+        press_enter_to_continue();
         return;
     }
 
@@ -245,9 +248,7 @@ void delete_shape(void) {
     } else {
         printf("\033[1;31mError: Shape ID %d not found.\033[0m\n", id);
     }
-    printf("Press Enter to continue...");
-    char temp[10];
-    fgets(temp, sizeof(temp), stdin);
+    press_enter_to_continue();
 }
 
 // Modify shape parameters
@@ -258,9 +259,7 @@ void modify_shape(void) {
     }
     if (active_count == 0) {
         printf("\033[1;31mNo shapes currently active to modify.\033[0m\n");
-        printf("Press Enter to continue...");
-        char temp[10];
-        fgets(temp, sizeof(temp), stdin);
+        press_enter_to_continue();
         return;
     }
 
@@ -282,9 +281,7 @@ void modify_shape(void) {
 
     if (!target) {
         printf("\033[1;31mError: Shape ID %d not found.\033[0m\n", id);
-        printf("Press Enter to continue...");
-        char temp[10];
-        fgets(temp, sizeof(temp), stdin);
+        press_enter_to_continue();
         return;
     }
 
@@ -327,9 +324,7 @@ void modify_shape(void) {
 
     redraw_all_shapes();
     printf("\033[1;32mShape ID %d modified successfully!\033[0m\n", id);
-    printf("Press Enter to continue...");
-    char temp[10];
-    fgets(temp, sizeof(temp), stdin);
+    press_enter_to_continue();
 }
 
 // Clear all active shapes
@@ -340,9 +335,7 @@ void clear_all_shapes(void) {
     next_shape_id = 1;
     redraw_all_shapes();
     printf("\033[1;32mCanvas cleared.\033[0m\n");
-    printf("Press Enter to continue...");
-    char temp[10];
-    fgets(temp, sizeof(temp), stdin);
+    press_enter_to_continue();
 }
 
 // Save the raw text output to a file
@@ -361,9 +354,7 @@ void save_to_file(void) {
     FILE* fp = fopen(filename, "w");
     if (!fp) {
         printf("\033[1;31mError: Could not create/open file '%s' for writing.\033[0m\n", filename);
-        printf("Press Enter to continue...");
-        char temp[10];
-        fgets(temp, sizeof(temp), stdin);
+        press_enter_to_continue();
         return;
     }
 
@@ -376,9 +367,7 @@ void save_to_file(void) {
     fclose(fp);
 
     printf("\033[1;32mDrawing saved successfully to '%s'!\033[0m\n", filename);
-    printf("Press Enter to continue...");
-    char temp[10];
-    fgets(temp, sizeof(temp), stdin);
+    press_enter_to_continue();
 }
 
 int main(void) {
