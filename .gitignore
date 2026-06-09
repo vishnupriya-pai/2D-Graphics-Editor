@@ -1,0 +1,8 @@
+# Executables and Binaries
+*.exe
+*.o
+*.obj
+
+# Local Output Drawings
+demo.txt
+new_rect.txt
