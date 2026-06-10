@@ -72,7 +72,9 @@ Windows (PowerShell / CMD):
 
 PowerShell
 .\terminal_editor.exe
-Interactive Controls
+
+
+##Interactive Controls
 On execution, the editor pre-seeds three sample demo layers (a border rectangle, a central circle, and a diagonal splitting line) and opens up an action-driven runtime prompt:
 
 [1] Add Shape: Launch sub-prompts to introduce a Line, Rectangle, Circle, or Triangle with coordinate validation boundaries.
