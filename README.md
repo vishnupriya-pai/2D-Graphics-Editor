@@ -1,7 +1,8 @@
 # 2D Terminal Graphics Editor
 
 An interactive, vector-to-raster 2D graphics engine and TUI (Text User Interface) application written in standard C. The application maintains an in-memory vector object table and mathematically rasterizes geometric primitives onto an $80 \times 24$ character grid canvas using classical computer graphics rasterization algorithms. The visual output features retro hardware styling powered entirely via raw ANSI terminal escape sequences.
-##Interactive Controls
+
+# Interactive Controls
 On execution, the editor pre-seeds three sample demo layers (a border rectangle, a central circle, and a diagonal splitting line) and opens up an action-driven runtime prompt:
 
 [1] Add Shape: Launch sub-prompts to introduce a Line, Rectangle, Circle, or Triangle with coordinate validation boundaries.
